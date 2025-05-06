@@ -1,0 +1,15 @@
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up service account key
+        run: |
+          echo "${{ secrets.ASM_WEB_CRED }}" | base64 --decode > key.json
+
+      - name: Use the key
+        run: |
+          export GOOGLE_APPLICATION_CREDENTIALS="$PWD/key.json"
+          python Web_App.py
