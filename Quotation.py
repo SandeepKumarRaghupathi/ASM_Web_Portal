@@ -10,6 +10,11 @@ from datetime import date
 #     scopes=["https://www.googleapis.com/auth/spreadsheets"]
 # )
 
+headers = {
+    "authorization": st.secrets["auth_token"],
+    "context-type": "application/json"
+    
+}
 # Authenticate and connect to Google Sheets
 def connect_to_gsheet(creds_json, spreadsheet_name, sheet_name):
     scope = ["https://spreadsheets.google.com/feeds",
