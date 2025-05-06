@@ -12,8 +12,7 @@ from datetime import date
 
 headers = {
     "authorization": st.secrets["auth_token"],
-    "context-type": "application/json"
-    
+    "context-type": "application/json"  
 }
 # Authenticate and connect to Google Sheets
 def connect_to_gsheet(creds_json, spreadsheet_name, sheet_name):
