@@ -1,15 +1,33 @@
+name: Deploy Streamlit App Securely
+
+on:
+  push:
+    branches: [ main ]  # or any branch you want
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Set up service account key
-        run: |
-          echo "${{ secrets.ASM_WEB_CRED }}" | base64 --decode > key.json
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
 
-      - name: Use the key
+      - name: Install dependencies
         run: |
-          export GOOGLE_APPLICATION_CREDENTIALS="$PWD/key.json"
-          python Web_App.py
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Decode GCP key and save to file
+        run: |
+          echo "${{ secrets.ASM_WEB_CRED }}" | base64 --decode > gcp-key.json
+
+      - name: Set GOOGLE_APPLICATION_CREDENTIALS
+        run: echo "GOOGLE_APPLICATION_CREDENTIALS=$PWD/gcp-key.json" >> $GITHUB_ENV
+
+      - name: Run Streamlit app
+        run: streamlit run Web_App.py  # Adjust the script name
