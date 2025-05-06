@@ -7,7 +7,7 @@ st.title("ASM Civil Suppliers and Earthmovers")
 col1, col2 = st.columns(2, gap="small", vertical_alignment="center")
 
 with col1:
-    st.image("shed.png",width=600)
+    st.image("Shed.png",width=600)
 
 with col2:
     st.title("MoulishKumar", anchor=False)
