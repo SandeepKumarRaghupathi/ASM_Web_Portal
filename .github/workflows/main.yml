@@ -2,7 +2,7 @@ name: Deploy Streamlit App Securely
 
 on:
   push:
-    branches: [ main ]  # or any branch you want
+    branches: [ Sandeep ]  # or any branch you want
 
 jobs:
   deploy:
@@ -24,7 +24,7 @@ jobs:
 
       - name: Decode GCP key and save to file
         run: |
-          echo "${{ secrets.ASM_WEB_CRED }}" | base64 --decode > gcp-key.json
+          echo "${{ secrets.GCP_KEY_JSON_BASE64 }}" | base64 --decode > gcp-key.json
 
       - name: Set GOOGLE_APPLICATION_CREDENTIALS
         run: echo "GOOGLE_APPLICATION_CREDENTIALS=$PWD/gcp-key.json" >> $GITHUB_ENV
