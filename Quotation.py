@@ -11,7 +11,7 @@ if "GOOGLE_APPLICATION_CREDENTIALS" not in os.environ:
     raise EnvironmentError("GOOGLE_APPLICATION_CREDENTIALS is not set.")
 
 # Load credentials from env var path
-creds = service_account.Credentials.from_service_account_file(
+CREDENTIALS_FILE = service_account.Credentials.from_service_account_file(
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"],
     scopes=["https://www.googleapis.com/auth/spreadsheets"]
 )
