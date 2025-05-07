@@ -33,3 +33,4 @@ jobs:
 
       - name: Run Streamlit app
         run: streamlit run Web_App.py
+
