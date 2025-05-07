@@ -4,6 +4,7 @@ from google.oauth2 import service_account
 import streamlit as st
 import pandas as pd
 from datetime import date
+import os
 
 # Load credentials from environment
 CREDENTIALS_FILE = service_account.Credentials.from_service_account_file(
