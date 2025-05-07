@@ -28,7 +28,7 @@ import os
 #     scopes=["https://www.googleapis.com/auth/spreadsheets"]
 # )
 
-Authenticate and connect to Google Sheets
+# Authenticate and connect to Google Sheets
 def connect_to_gsheet(creds_json, spreadsheet_name, sheet_name):
     scope = ["https://spreadsheets.google.com/feeds",
              'https://www.googleapis.com/auth/spreadsheets',
