@@ -24,7 +24,7 @@ def connect_to_gsheet(creds_json, spreadsheet_name, sheet_name):
 SPREADSHEET_NAME = 'ASM Form'
 SHEET_NAME_1 = 'Demand'
 SHEET_NAME_2 = 'Quotation'
-CREDENTIALS_FILE = 'asm-web-portal-1d9171e66f92.json'
+# CREDENTIALS_FILE = 'asm-web-portal-1d9171e66f92.json'
 
 # Connect to the Google Sheet
 sheet_by_name_2 = connect_to_gsheet(CREDENTIALS_FILE, SPREADSHEET_NAME, sheet_name=SHEET_NAME_2)
