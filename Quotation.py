@@ -6,17 +6,27 @@ import pandas as pd
 from datetime import date
 import os
 
-# # Load credentials from environment
-# CREDENTIALS_FILE = service_account.Credentials.from_service_account_file(
-#     os.environ["GOOGLE_APPLICATION_CREDENTIALS"],
-#     scopes=["https://www.googleapis.com/auth/spreadsheets"]
-# )
-print("GOOGLE_APPLICATION_CREDENTIALS" in os.environ)  # Should print True
+# Confirm env var is available
+if "GOOGLE_APPLICATION_CREDENTIALS" not in os.environ:
+    raise EnvironmentError("GOOGLE_APPLICATION_CREDENTIALS is not set.")
 
-CREDENTIALS_FILE = service_account.Credentials.from_service_account_file(
-    "$PWD/gcp-key.json",  # hardcoded path
+# Load credentials from env var path
+creds = service_account.Credentials.from_service_account_file(
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"],
     scopes=["https://www.googleapis.com/auth/spreadsheets"]
 )
+
+# # # Load credentials from environment
+# # CREDENTIALS_FILE = service_account.Credentials.from_service_account_file(
+# #     os.environ["GOOGLE_APPLICATION_CREDENTIALS"],
+# #     scopes=["https://www.googleapis.com/auth/spreadsheets"]
+# # )
+# print("GOOGLE_APPLICATION_CREDENTIALS" in os.environ)  # Should print True
+
+# CREDENTIALS_FILE = service_account.Credentials.from_service_account_file(
+#     "$PWD/gcp-key.json",  # hardcoded path
+#     scopes=["https://www.googleapis.com/auth/spreadsheets"]
+# )
 
 # headers = {
 #     "authorization": st.secrets["auth_token"],
