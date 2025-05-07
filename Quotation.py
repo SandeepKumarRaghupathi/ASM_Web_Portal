@@ -11,12 +11,12 @@ SHEET_NAME_1 = 'Demand'
 SHEET_NAME_2 = 'Quotation'
 
 # Load credentials from environment variable
-# if "GOOGLE_APPLICATION_CREDENTIALS" not in os.environ:
-#     raise EnvironmentError("GOOGLE_APPLICATION_CREDENTIALS is not set.")
+if "GOOGLE_APPLICATION_CREDENTIALS" not in os.environ:
+    raise EnvironmentError("GOOGLE_APPLICATION_CREDENTIALS is not set.")
 
-# CREDENTIALS_FILE = os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
+CREDENTIALS_FILE = os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
 
-CREDENTIALS_FILE = "/home/runner/work/ASM_Web_Portal/ASM_Web_Portal/gcp-key.json"
+# CREDENTIALS_FILE = "/home/runner/work/ASM_Web_Portal/ASM_Web_Portal/gcp-key.json"
 
 # Define scopes
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets", 
