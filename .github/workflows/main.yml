@@ -30,6 +30,6 @@ jobs:
       - name: Set GOOGLE_APPLICATION_CREDENTIALS
         run: echo "GOOGLE_APPLICATION_CREDENTIALS=$PWD/gcp-key.json" >> $GITHUB_ENV
 
-      # - name: Run Streamlit app
-      #   run: streamlit run Web_App.py  # Adjust the script name
+      - name: Run Streamlit app
+        run: streamlit run Web_App.py  # Adjust the script name
       
