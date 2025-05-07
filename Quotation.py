@@ -13,7 +13,7 @@ import os
 # )
 
 CREDENTIALS_FILE = service_account.Credentials.from_service_account_file(
-    "gcp-key.json",  # hardcoded path
+    "$PWD/gcp-key.json",  # hardcoded path
     scopes=["https://www.googleapis.com/auth/spreadsheets"]
 )
 
