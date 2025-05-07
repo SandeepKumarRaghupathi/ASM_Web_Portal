@@ -6,9 +6,14 @@ import pandas as pd
 from datetime import date
 import os
 
-# Load credentials from environment
+# # Load credentials from environment
+# CREDENTIALS_FILE = service_account.Credentials.from_service_account_file(
+#     os.environ["GOOGLE_APPLICATION_CREDENTIALS"],
+#     scopes=["https://www.googleapis.com/auth/spreadsheets"]
+# )
+
 CREDENTIALS_FILE = service_account.Credentials.from_service_account_file(
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"],
+    "gcp-key.json",  # hardcoded path
     scopes=["https://www.googleapis.com/auth/spreadsheets"]
 )
 
