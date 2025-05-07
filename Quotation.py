@@ -11,6 +11,7 @@ import os
 #     os.environ["GOOGLE_APPLICATION_CREDENTIALS"],
 #     scopes=["https://www.googleapis.com/auth/spreadsheets"]
 # )
+print("GOOGLE_APPLICATION_CREDENTIALS" in os.environ)  # Should print True
 
 CREDENTIALS_FILE = service_account.Credentials.from_service_account_file(
     "$PWD/gcp-key.json",  # hardcoded path
