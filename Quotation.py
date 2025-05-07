@@ -6,7 +6,32 @@ import pandas as pd
 from datetime import date
 import os
 
+# Confirm env var is available
+if "GOOGLE_APPLICATION_CREDENTIALS" not in os.environ:
+    raise EnvironmentError("GOOGLE_APPLICATION_CREDENTIALS is not set.")
 
+# Load credentials from env var path
+creds = service_account.Credentials.from_service_account_file(
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"],
+    scopes=["https://www.googleapis.com/auth/spreadsheets"]
+)
+
+# # # Load credentials from environment
+# # CREDENTIALS_FILE = service_account.Credentials.from_service_account_file(
+# #     os.environ["GOOGLE_APPLICATION_CREDENTIALS"],
+# #     scopes=["https://www.googleapis.com/auth/spreadsheets"]
+# # )
+# print("GOOGLE_APPLICATION_CREDENTIALS" in os.environ)  # Should print True
+
+# CREDENTIALS_FILE = service_account.Credentials.from_service_account_file(
+#     "$PWD/gcp-key.json",  # hardcoded path
+#     scopes=["https://www.googleapis.com/auth/spreadsheets"]
+# )
+
+# headers = {
+#     "authorization": st.secrets["auth_token"],
+#     "context-type": "application/json"  
+# }
 # Authenticate and connect to Google Sheets
 def connect_to_gsheet(creds_json, spreadsheet_name, sheet_name):
     scope = ["https://spreadsheets.google.com/feeds",
@@ -24,7 +49,7 @@ def connect_to_gsheet(creds_json, spreadsheet_name, sheet_name):
 SPREADSHEET_NAME = 'ASM Form'
 SHEET_NAME_1 = 'Demand'
 SHEET_NAME_2 = 'Quotation'
-# CREDENTIALS_FILE = 'asm-web-portal-1d9171e66f92.json'
+# CREDENTIALS_FILE = 'asm-web-portal-66eaab8ed9f6.json'
 
 # Connect to the Google Sheet
 sheet_by_name_2 = connect_to_gsheet(CREDENTIALS_FILE, SPREADSHEET_NAME, sheet_name=SHEET_NAME_2)
@@ -238,4 +263,3 @@ with st.expander("Place the Order"):
 #
 #
 #
-
