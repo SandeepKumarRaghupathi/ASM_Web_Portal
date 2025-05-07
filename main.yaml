@@ -30,6 +30,8 @@ jobs:
           echo "GOOGLE_APPLICATION_CREDENTIALS=$PWD/gcp-key.json" >> $GITHUB_ENV
           export GOOGLE_APPLICATION_CREDENTIALS=$PWD/gcp-key.json
           echo "Credential path: $GOOGLE_APPLICATION_CREDENTIALS"
+          echo GOOGLE_APPLICATION_CREDENTIALS=$PWD/gcp-key.json
+
 
       - name: Run Streamlit app
         run: streamlit run Web_App.py
