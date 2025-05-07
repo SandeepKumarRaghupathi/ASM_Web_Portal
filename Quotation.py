@@ -16,7 +16,7 @@ if "GOOGLE_APPLICATION_CREDENTIALS" not in os.environ:
 
 # CREDENTIALS_FILE = os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
 
-CREDENTIALS_FILE = /home/runner/work/ASM_Web_Portal/ASM_Web_Portal/gcp-key.json
+CREDENTIALS_FILE = "/home/runner/work/ASM_Web_Portal/ASM_Web_Portal/gcp-key.json"
 
 # Define scopes
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets", 
