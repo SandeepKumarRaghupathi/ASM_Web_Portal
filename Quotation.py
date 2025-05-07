@@ -16,6 +16,7 @@ CREDENTIALS_FILE = service_account.Credentials.from_service_account_file(
     scopes=["https://www.googleapis.com/auth/spreadsheets"]
 )
 
+
 # # # Load credentials from environment
 # # CREDENTIALS_FILE = service_account.Credentials.from_service_account_file(
 # #     os.environ["GOOGLE_APPLICATION_CREDENTIALS"],
@@ -33,17 +34,27 @@ CREDENTIALS_FILE = service_account.Credentials.from_service_account_file(
 #     "context-type": "application/json"  
 # }
 # Authenticate and connect to Google Sheets
-def connect_to_gsheet(creds_json, spreadsheet_name, sheet_name):
-    scope = ["https://spreadsheets.google.com/feeds",
-             'https://www.googleapis.com/auth/spreadsheets',
-             "https://www.googleapis.com/auth/drive.file",
-             "https://www.googleapis.com/auth/drive"]
+# def connect_to_gsheet(creds_json, spreadsheet_name, sheet_name):
+#     scope = ["https://spreadsheets.google.com/feeds",
+#              'https://www.googleapis.com/auth/spreadsheets',
+#              "https://www.googleapis.com/auth/drive.file",
+#              "https://www.googleapis.com/auth/drive"]
 
-    credentials = ServiceAccountCredentials.from_json_keyfile_name(creds_json, scope)
-    client = gspread.authorize(credentials)
+#     credentials = ServiceAccountCredentials.from_json_keyfile_name(creds_json, scope)
+#     client = gspread.authorize(credentials)
+#     spreadsheet = client.open(spreadsheet_name)
+#     return spreadsheet.worksheet(sheet_name)  # Access specific sheet by name
+
+def connect_to_gsheet(creds, spreadsheet_name, sheet_name):
+    client = gspread.authorize(creds)
     spreadsheet = client.open(spreadsheet_name)
-    return spreadsheet.worksheet(sheet_name)  # Access specific sheet by name
+    return spreadsheet.worksheet(sheet_name)
 
+CREDENTIALS_FILE = os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
+creds = service_account.Credentials.from_service_account_file(
+    CREDENTIALS_FILE,
+    scopes=["https://www.googleapis.com/auth/spreadsheets"]
+)
 
 # Google Sheet credentials and details
 SPREADSHEET_NAME = 'ASM Form'
@@ -52,8 +63,11 @@ SHEET_NAME_2 = 'Quotation'
 # CREDENTIALS_FILE = 'asm-web-portal-66eaab8ed9f6.json'
 
 # Connect to the Google Sheet
-sheet_by_name_2 = connect_to_gsheet(CREDENTIALS_FILE, SPREADSHEET_NAME, sheet_name=SHEET_NAME_2)
-sheet_by_name_1 = connect_to_gsheet(CREDENTIALS_FILE, SPREADSHEET_NAME, sheet_name=SHEET_NAME_1)
+# sheet_by_name_2 = connect_to_gsheet(CREDENTIALS_FILE, SPREADSHEET_NAME, sheet_name=SHEET_NAME_2)
+# sheet_by_name_1 = connect_to_gsheet(CREDENTIALS_FILE, SPREADSHEET_NAME, sheet_name=SHEET_NAME_1)
+
+sheet_by_name_2 = connect_to_gsheet(creds, SPREADSHEET_NAME, SHEET_NAME_2)
+sheet_by_name_1 = connect_to_gsheet(creds, SPREADSHEET_NAME, SHEET_NAME_1)
 
 st.title("Quotation")
 
