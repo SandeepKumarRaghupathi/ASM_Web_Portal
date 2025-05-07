@@ -6,15 +6,15 @@ import pandas as pd
 from datetime import date
 import os
 
-# Confirm env var is available
-if "GOOGLE_APPLICATION_CREDENTIALS" not in os.environ:
-    raise EnvironmentError("GOOGLE_APPLICATION_CREDENTIALS is not set.")
+# # Confirm env var is available
+# if "GOOGLE_APPLICATION_CREDENTIALS" not in os.environ:
+#     raise EnvironmentError("GOOGLE_APPLICATION_CREDENTIALS is not set.")
 
-# Load credentials from env var path
-CREDENTIALS_FILE = service_account.Credentials.from_service_account_file(
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"],
-    scopes=["https://www.googleapis.com/auth/spreadsheets"]
-)
+# # Load credentials from env var path
+# CREDENTIALS_FILE = service_account.Credentials.from_service_account_file(
+#     os.environ["GOOGLE_APPLICATION_CREDENTIALS"],
+#     scopes=["https://www.googleapis.com/auth/spreadsheets"]
+# )
 
 
 # # # Load credentials from environment
