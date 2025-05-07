@@ -4,11 +4,11 @@ import streamlit as st
 import pandas as pd
 from datetime import date
 
-# # Load credentials from environment
-# creds = service_account.Credentials.from_service_account_file(
-#     os.environ["GOOGLE_APPLICATION_CREDENTIALS"],
-#     scopes=["https://www.googleapis.com/auth/spreadsheets"]
-# )
+# Load credentials from environment
+creds = service_account.Credentials.from_service_account_file(
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"],
+    scopes=["https://www.googleapis.com/auth/spreadsheets"]
+)
 
 # headers = {
 #     "authorization": st.secrets["auth_token"],
