@@ -11,6 +11,8 @@ creds = service_account.Credentials.from_service_account_info(creds_dict)
 
 client = gspread.authorize(creds)
 
+st.write("gcp_service_account" in st.secrets)  # Should print True
+
 # Google Sheet details
 SPREADSHEET_NAME = 'ASM Form'
 SHEET_NAME_1 = 'Demand'
