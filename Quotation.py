@@ -1,7 +1,7 @@
 import os
 import streamlit as st
 import pandas as pd
-from datetime import date
+from datetime import date, datetime
 import gspread
 from google.oauth2 import service_account
 
@@ -52,13 +52,13 @@ MATERIAL_TYPES = [
     "P-Sand", "M-Sand", "20MM", "12MM", "Chips-6MM", "Dust"
 ]
 
-Orderdate = date.today()
+Orderdate = datetime.now()
 today = date.today()
 
 # Form UI
 with st.expander("Place the Order"):
     with st.form(key="Quotation_form", clear_on_submit=True):
-        Orderdate_str = Orderdate.strftime("%d-%m-%Y")
+        Orderdate_str = Orderdate.strftime("%d-%m-%Y %H:%M:%S %p")
         First_Name = st.text_input(label="First_Name*")
         Mobile_Number = st.text_input(label="MobileNo*")
         Material_type = st.selectbox("MaterialType*", options=MATERIAL_TYPES, index=None)
