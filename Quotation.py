@@ -56,7 +56,7 @@ MATERIAL_TYPES = [
 # Get current time in IST
 Orderdate = datetime.now(ZoneInfo("Asia/Kolkata"))
 # Orderdate = Orderdate.strftime("%d-%m-%Y %I:%M:%S %p")
-today = ist_time.date()
+today = Orderdate.date()
 
 # Orderdate = datetime.now()
 # today = date.today()
