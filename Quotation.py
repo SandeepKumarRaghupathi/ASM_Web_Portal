@@ -6,7 +6,7 @@ import gspread
 from google.oauth2 import service_account
 
 # Load credentials from Streamlit secrets
-creds_dict = st.secrets["service_account"]
+creds_dict = st.secrets["gcp_service_account"]
 creds = service_account.Credentials.from_service_account_info(creds_dict)
 
 client = gspread.authorize(creds)
