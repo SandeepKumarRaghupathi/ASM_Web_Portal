@@ -49,7 +49,7 @@ def add_data(row):
 
 # List of material types
 MATERIAL_TYPES = [
-    "P-Sand", "M-Sand", "Chips-20MM", "Chips-40MM", "Chips-60MM", "Gravel"
+    "P-Sand", "M-Sand", "20MM", "12MM", "Chips-6MM", "Dust"
 ]
 
 Orderdate = date.today()
