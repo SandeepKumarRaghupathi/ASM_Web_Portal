@@ -16,26 +16,12 @@ creds = service_account.Credentials.from_service_account_info(
 )
 
 client = gspread.authorize(creds)
-
-st.write("gcp_service_account" in st.secrets)  # Should print True
+# st.write("gcp_service_account" in st.secrets)  # Should print True
 
 # Google Sheet details
 SPREADSHEET_NAME = 'ASM Form'
 SHEET_NAME_1 = 'Demand'
 SHEET_NAME_2 = 'Quotation'
-
-# # Load credentials from environment variable
-# if "GOOGLE_APPLICATION_CREDENTIALS" not in os.environ:
-#     raise EnvironmentError("GOOGLE_APPLICATION_CREDENTIALS is not set.")
-
-# CREDENTIALS_FILE = os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
-
-# CREDENTIALS_FILE = "/home/runner/work/ASM_Web_Portal/ASM_Web_Portal/gcp-key.json"
-
-# # Load service account credentials
-# creds = service_account.Credentials.from_service_account_file(
-#     CREDENTIALS_FILE, scopes=SCOPES
-# )
 
 # Connect to Google Sheets
 def connect_to_gsheet(creds, spreadsheet_name, sheet_name):
@@ -63,7 +49,7 @@ def add_data(row):
 
 # List of material types
 MATERIAL_TYPES = [
-    "P-Sand", "M-Sand", "Chips-20MM", "Gravel"
+    "P-Sand", "M-Sand", "Chips-20MM", "Chips-40MM", "Chips-60MM", "Gravel"
 ]
 
 Orderdate = date.today()
