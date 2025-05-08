@@ -4,6 +4,7 @@ import pandas as pd
 from datetime import date, datetime
 import gspread
 from google.oauth2 import service_account
+from zoneinfo import ZoneInfo  # for timezone conversion
 
 # Define scopes
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets", 
@@ -52,8 +53,13 @@ MATERIAL_TYPES = [
     "P-Sand", "M-Sand", "20MM", "12MM", "Chips-6MM", "Dust"
 ]
 
-Orderdate = datetime.now()
-today = date.today()
+# Get current time in IST
+Orderdate = datetime.now(ZoneInfo("Asia/Kolkata"))
+# Orderdate = ist_time.strftime("%d-%m-%Y %I:%M:%S %p")
+today = ist_time.date()
+
+# Orderdate = datetime.now()
+# today = date.today()
 
 # Form UI
 with st.expander("Place the Order"):
