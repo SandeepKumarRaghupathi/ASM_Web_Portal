@@ -5,9 +5,15 @@ from datetime import date
 import gspread
 from google.oauth2 import service_account
 
+# Define scopes
+SCOPES = ["https://www.googleapis.com/auth/spreadsheets", 
+          "https://www.googleapis.com/auth/drive"]
+
 # Load credentials from Streamlit secrets
 creds_dict = st.secrets["gcp_service_account"]
-creds = service_account.Credentials.from_service_account_info(creds_dict)
+creds = service_account.Credentials.from_service_account_info(
+    creds_dict, scopes=SCOPES
+)
 
 client = gspread.authorize(creds)
 
@@ -25,10 +31,6 @@ SHEET_NAME_2 = 'Quotation'
 # CREDENTIALS_FILE = os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
 
 # CREDENTIALS_FILE = "/home/runner/work/ASM_Web_Portal/ASM_Web_Portal/gcp-key.json"
-
-# Define scopes
-SCOPES = ["https://www.googleapis.com/auth/spreadsheets", 
-          "https://www.googleapis.com/auth/drive"]
 
 # # Load service account credentials
 # creds = service_account.Credentials.from_service_account_file(
