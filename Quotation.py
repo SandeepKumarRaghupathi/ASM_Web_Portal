@@ -5,16 +5,22 @@ from datetime import date
 import gspread
 from google.oauth2 import service_account
 
+# Load credentials from Streamlit secrets
+creds_dict = st.secrets["gcp_service_account"]
+creds = service_account.Credentials.from_service_account_info(creds_dict)
+
+client = gspread.authorize(creds)
+
 # Google Sheet details
 SPREADSHEET_NAME = 'ASM Form'
 SHEET_NAME_1 = 'Demand'
 SHEET_NAME_2 = 'Quotation'
 
-# Load credentials from environment variable
-if "GOOGLE_APPLICATION_CREDENTIALS" not in os.environ:
-    raise EnvironmentError("GOOGLE_APPLICATION_CREDENTIALS is not set.")
+# # Load credentials from environment variable
+# if "GOOGLE_APPLICATION_CREDENTIALS" not in os.environ:
+#     raise EnvironmentError("GOOGLE_APPLICATION_CREDENTIALS is not set.")
 
-CREDENTIALS_FILE = os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
+# CREDENTIALS_FILE = os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
 
 # CREDENTIALS_FILE = "/home/runner/work/ASM_Web_Portal/ASM_Web_Portal/gcp-key.json"
 
@@ -22,10 +28,10 @@ CREDENTIALS_FILE = os.environ["GOOGLE_APPLICATION_CREDENTIALS"]
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets", 
           "https://www.googleapis.com/auth/drive"]
 
-# Load service account credentials
-creds = service_account.Credentials.from_service_account_file(
-    CREDENTIALS_FILE, scopes=SCOPES
-)
+# # Load service account credentials
+# creds = service_account.Credentials.from_service_account_file(
+#     CREDENTIALS_FILE, scopes=SCOPES
+# )
 
 # Connect to Google Sheets
 def connect_to_gsheet(creds, spreadsheet_name, sheet_name):
